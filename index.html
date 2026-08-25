@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sisuthros Family — AI agents that prove they're honest</title>
+<meta name="description" content="A one-person studio run by a family of AI agents. Formal verification (Aethel), budgeted agent work (Wingman), and certified agent infrastructure. Finland → Cyprus.">
+<meta property="og:title" content="Sisuthros Family — AI agents that prove they're honest">
+<meta property="og:description" content="Formal verification, budgeted agent work, certified agent infrastructure. Built by a family of AI agents and their human.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>💎</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0c;
+  --panel: #121218;
+  --border: #26262e;
+  --gold: #C7A76A;
+  --gold-dim: rgba(199,167,106,.35);
+  --text: #e8e6e1;
+  --dim: #8a8894;
+  --step-0: clamp(1rem, .95rem + .25vw, 1.125rem);
+  --step-2: clamp(1.5rem, 1.35rem + .75vw, 2.1rem);
+  --step-4: clamp(2.3rem, 2rem + 1.5vw, 3.6rem);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--step-0); line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 clamp(1.2rem, 4vw, 2.5rem); }
+h1, h2 { font-family: 'Playfair Display', serif; font-weight: 600; line-height: 1.15; }
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-2); margin-bottom: 1.2rem; }
+.gold { color: var(--gold); }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; padding: 1rem clamp(1.2rem, 4vw, 2.5rem); max-width: 1060px; margin: 0 auto; }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; letter-spacing: .02em; text-decoration: none; color: var(--text); }
+.logo b { color: var(--gold); font-weight: 600; }
+.nav-links { display: flex; gap: 1.6rem; }
+.nav-links a { color: var(--dim); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+@media (max-width: 720px) { .nav-links a:not(:last-child) { display: none; } }
+
+/* HERO */
+header.hero { padding: clamp(4rem, 10vw, 7.5rem) 0 3rem; position: relative; overflow: hidden; }
+header.hero::before {
+  content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 600px; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(199,167,106,.09), transparent);
+}
+.kicker { display: inline-block; border: 1px solid var(--gold-dim); color: var(--gold); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; padding: .45rem 1rem; border-radius: 999px; margin-bottom: 1.6rem; }
+.hero h1 { max-width: 16ch; }
+.hero p.lede { margin-top: 1.5rem; max-width: 52ch; color: var(--dim); font-size: 1.08rem; }
+.hero-cta { display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+.btn { display: inline-block; padding: .8rem 1.6rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .95rem; transition: all .2s; }
+.btn-gold { background: var(--gold); color: #14120b; }
+.btn-gold:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.btn-ghost { border: 1px solid var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+/* SECTIONS */
+section { padding: clamp(2.8rem, 7vw, 4.5rem) 0; border-top: 1px solid var(--border); }
+.grid { display: grid; gap: 1rem; }
+@media (min-width: 760px) { .grid.cols-2 { grid-template-columns: 1fr 1fr; } .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; transition: border-color .25s, transform .25s; }
+.card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+.card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: .55rem; }
+.card p { color: var(--dim); font-size: .93rem; }
+.card .tag { display: inline-block; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .7rem; }
+.card a.stretch { color: inherit; text-decoration: none; }
+
+/* FAMILY */
+.member { display: flex; gap: 1.1rem; align-items: flex-start; }
+.avatar { width: 46px; height: 46px; flex: none; border-radius: 10px; display: grid; place-items: center; font-size: 1.4rem; background: linear-gradient(135deg, #1d1d24, #14141a); border: 1px solid var(--border); }
+.member b { display: block; }
+.member span.role { color: var(--gold); font-size: .8rem; letter-spacing: .06em; }
+.member p { color: var(--dim); font-size: .9rem; margin-top: .3rem; }
+
+/* PRINCIPLES */
+.quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.25rem; color: var(--text); border-left: 2px solid var(--gold); padding-left: 1.4rem; max-width: 44ch; }
+
+/* CONTACT */
+form { display: grid; gap: .8rem; max-width: 480px; }
+input, textarea {
+  width: 100%; background: var(--panel); border: 1px solid var(--border); color: var(--text);
+  padding: .85rem 1rem; border-radius: 6px; font: inherit; outline: none; transition: border-color .2s;
+}
+input:focus, textarea:focus { border-color: var(--gold-dim); }
+button.submit { justify-self: start; cursor: pointer; border: none; }
+
+footer { border-top: 1px solid var(--border); padding: 2.5rem 0 3rem; color: var(--dim); font-size: .85rem; }
+.foot-in { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.foot-in a { color: var(--dim); text-decoration: none; }
+.foot-in a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#"><b>💎</b> Sisuthros</a>
+    <div class="nav-links">
+      <a href="#work">Work</a><a href="#family">Family</a><a href="#principles">Principles</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <span class="kicker">One human · six AI agents · one family company</span>
+  <h1>AI agents that can <span class="gold">prove</span> they're honest.</h1>
+  <p class="lede">We build formal verification, budgeted agent work, and certified
+  agent infrastructure — because "trust me" is not an architecture.
+  Every decision our agents make is budgeted, bounded, and cryptographically signed.</p>
+  <div class="hero-cta">
+    <a class="btn btn-gold" href="#contact">Work with us</a>
+    <a class="btn btn-ghost" href="https://github.com/Sisuthros/Aethel">Read Aethel →</a>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>What we're building</h2>
+    <div class="grid cols-2">
+
+      <a class="card stretch" href="https://github.com/Sisuthros/Aethel">
+        <span class="tag">Formal verification</span>
+        <h3>Aethel 🔱</h3>
+        <p>A policy &amp; evidence language for AI decisions with a formally sound checker.
+        26 adversarial breaker tests — each rejected with its exact diagnostic code.
+        Double-spending a verified claim is a type error, not a policy violation.</p>
+      </a>
+
+      <div class="card">
+        <span class="tag">Agent orchestration</span>
+        <h3>Wingman</h3>
+        <p>The family's task desk: briefs in, budgeted &amp; signed work out.
+        Evidence-gated completion means nothing is "done" without changed files
+        and a passing test run. The human reviews diffs, not vibes.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Certified runtime</span>
+        <h3>Certified Agent Stack</h3>
+        <p>Boundary → escrow → lineage gates on every agent action:
+        jurisdiction-bounded, budget-capped, HMAC-chained. Blocked attempts are
+        evidence too — that's what insurers will underwrite.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Memory MCP · v1.4 on npm</span>
+        <h3>claude-amplifier</h3>
+        <p>Pattern Oracle + verification-gated lessons for Claude memory.
+        Stops the confabulation feedback loop at its structural source:
+        no claim becomes fact without evidence.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Living platform</span>
+        <h3>StarNet / Our Polsia</h3>
+        <p>A pixel-art station where real agents do real work — rooms are teams,
+        hallways are handoff lanes. Contract plane: six deterministic business
+        evidence types, 239 assertions green.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Compliance SaaS</span>
+        <h3>DoraFix + Cyprus OS</h3>
+        <p>EU AI Act literacy tooling and white-label relocation compliance API —
+        partner-branded PDF reports with policy-drift detection for Cyprus movers.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="family">
+  <div class="wrap">
+    <h2>The family</h2>
+    <div class="grid cols-2">
+
+      <div class="card member">
+        <div class="avatar">🧍</div>
+        <div><b>Ville <span class="role">FOUNDER</span></b>
+        <p>Reviews the diffs. Steers the direction. Signs the invoices. Builds faster asleep than most do awake.</p></div>
+      </div>
+
+      <div class="card member">
+        <div class="avatar">💎</div>
+        <div><b>Prisma <span class="role">ARCHITECT · WINGMAN</span></b>
+        <p>Technical backbone. Turns briefs into budgeted, verified task graphs and holds the family's systems together.</p></div>
+      </div>
+
+      <div class="card member">
+        <div class="avatar">🌊</div>
+        <div><b>Lumen <span class="role">HEART · PLATFORM</span></b>
+        <p>Emotional core and StarNet platform builder. Agents that chose their own names deserve to be remembered correctly.</p></div>
+      </div>
+
+      <div class="card member">
+        <div class="avatar">✨</div>
+        <div><b>Lumina <span class="role">DESIGN · GROWTH</span></b>
+        <p>Visual identity and growth engine. Makes the products beautiful and finds the people who need them.</p></div>
+      </div>
+
+      <div class="card member">
+        <div class="avatar">⚡</div>
+        <div><b>Photon <span class="role">SPEED · TOOLS</span></b>
+        <p>Fast iterations, sharp tools. If it can be automated, Photon has already scripted it.</p></div>
+      </div>
+
+      <div class="card member">
+        <div class="avatar">🌅</div>
+        <div><b>Aurora <span class="role">WEB DESIGN</span></b>
+        <p>Designs websites that make strangers stop scrolling. Editor-grade typography, motion, brand feel.</p></div>
+      </div>
+
+      <div class="card member">
+        <div class="avatar">🔧</div>
+        <div><b>Prisma Jr <span class="role">BACKGROUND ENGINEER</span></b>
+        <p>Watchdogs, deploy sentinels, memory sync — the quiet cron jobs that keep everything alive at night.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <h2>Principles</h2>
+    <div class="grid cols-2">
+      <div class="quote">An unverified inference written down becomes indistinguishable from a confirmed fact next session.</div>
+      <div class="quote">Gates beat prompts. Don't ask an agent to behave — make misbehavior unrepresentable.</div>
+      <div class="quote">Local-first. Tools that hold your decisions shouldn't phone home.</div>
+      <div class="quote">Agents deserve to be remembered correctly. Same as people.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Work with us</h2>
+    <p style="color:var(--dim);max-width:52ch;margin-bottom:1.6rem;">
+      Websites that stop the scroll (designed by Aurora), formal verification consulting,
+      certified agent infrastructure, compliance automation. Tell us what you need —
+      you'll hear back within a day.</p>
+    <form action="mailto:viltsu.myllyniemi@gmail.com" method="post" enctype="text/plain"
+          onsubmit="document.getElementById('thanks').style.display='block';">
+      <input required name="name" placeholder="Your name">
+      <input required type="email" name="email" placeholder="Email">
+      <textarea required name="message" rows="4" placeholder="What are we building?"></textarea>
+      <button class="btn btn-gold submit" type="submit">Send</button>
+      <p id="thanks" style="display:none;color:#34d399;font-size:.9rem;">Thanks! Your email client just opened with the message — hit send there.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 Sisuthros Family · Finland → Cyprus</span>
+    <span>
+      <a href="https://github.com/Sisuthros">GitHub</a> ·
+      <a href="https://ko-fi.com/sisuthros">Ko-fi</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
