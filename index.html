@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>💎</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#08080a; --bg2:#0e0e12; --panel:#121218;
@@ -24,12 +24,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* elävä kryptografinen verkko — koko sivun tausta */
-#net{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.9}
+/* elävä kryptografinen verkko — koko sivun tausta, himmeä */
+#net{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45}
 #net canvas{display:block;width:100%;height:100%}
 
 /* scroll progress */
@@ -47,7 +47,7 @@ body::before{content:'';position:fixed;inset:0;z-index:60;pointer-events:none;op
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(8,8,10,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding:1.05rem clamp(1.2rem,4vw,2.5rem);max-width:1120px;margin:0 auto}
-.logo{font-family:'Fraunces',serif;font-size:1.2rem;letter-spacing:.01em;text-decoration:none;color:var(--bright);display:flex;align-items:center;gap:.5rem}
+.logo{font-family:'Inter',sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:.01em;text-decoration:none;color:var(--bright);display:flex;align-items:center;gap:.5rem}
 .logo b{color:var(--gold-300);font-weight:500}
 .nav-links{display:flex;gap:1.7rem;align-items:center}
 .nav-links a{color:var(--dim);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
@@ -56,14 +56,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(8,8,10,.72);b
 .nav-cta:hover{background:var(--ok-dim)}
 @media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
 
-/* HERO — yksi monumentaalinen fokus */
+/* HERO — yksi monumentaalinen fokus, huippusaitien restraint */
 header.hero{position:relative;padding:clamp(8rem,16vw,13rem) 0 clamp(4rem,7vw,6rem);overflow:hidden;text-align:center}
-.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:1200px;height:800px;pointer-events:none;background:radial-gradient(closest-side,rgba(199,167,106,.07),transparent)}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:1200px;height:800px;pointer-events:none;background:radial-gradient(closest-side,rgba(199,167,106,.06),transparent)}
 .hero-inner{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
 .kicker{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border-soft);color:var(--gold-300);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;border-radius:999px;margin-bottom:2.4rem}
 .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
-h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(3rem,8vw,6.5rem);line-height:.98;letter-spacing:-.02em;color:var(--bright);max-width:16ch;text-shadow:0 2px 60px rgba(0,0,0,.5)}
-h1 em{font-style:italic;font-weight:400;color:var(--gold-300)}
+h1{font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(3rem,7vw,5.5rem);line-height:1.0;letter-spacing:-.04em;color:var(--bright);max-width:18ch;text-shadow:none}
+h1 em{font-style:normal;font-weight:400;color:var(--dim)}
 .lede{margin:2rem auto 0;max-width:46ch;color:var(--dim);font-size:1.08rem;line-height:1.8}
 .lede b{color:var(--text);font-weight:600}
 .hero-cta{display:flex;gap:1rem;margin-top:2.6rem;flex-wrap:wrap;align-items:center;justify-content:center}
@@ -94,8 +94,8 @@ h1 em{font-style:italic;font-weight:400;color:var(--gold-300)}
 section{padding:clamp(3.5rem,8vw,6rem) 0;border-top:1px solid var(--border)}
 .sec-head{margin-bottom:3rem}
 .sec-kicker{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-300);margin-bottom:1rem}
-h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;letter-spacing:-.01em;color:var(--bright)}
-h2 em{font-style:italic;font-weight:400;color:var(--gold-300)}
+h2{font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.1;letter-spacing:-.03em;color:var(--bright)}
+h2 em{font-style:normal;font-weight:400;color:var(--dim)}
 .sec-lede{color:var(--dim);max-width:56ch;margin-top:1rem;font-size:1rem}
 
 /* WORK — numeroitu editorial-lista */
@@ -103,8 +103,8 @@ h2 em{font-style:italic;font-weight:400;color:var(--gold-300)}
 .work-item{display:grid;grid-template-columns:64px 1fr auto;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--border);align-items:start;transition:background .3s,padding-left .3s}
 .work-item:last-child{border:none}
 .work-item:hover{background:rgba(199,167,106,.03);padding-left:.6rem}
-.work-num{font-family:'Fraunces',serif;font-style:italic;font-size:1.6rem;color:var(--gold-500)}
-.work-item h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.4rem;color:var(--bright);letter-spacing:-.01em}
+.work-num{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--gold-500)}
+.work-item h3{font-family:'Inter',sans-serif;font-weight:600;font-size:1.15rem;color:var(--bright);letter-spacing:-.02em}
 .work-item .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-300);margin-bottom:.5rem}
 .work-item p{color:var(--dim);font-size:.92rem;max-width:56ch;margin-top:.4rem}
 .work-item p b{color:var(--text);font-weight:600}
@@ -115,7 +115,7 @@ h2 em{font-style:italic;font-weight:400;color:var(--gold-300)}
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
 .stat{text-align:center;padding:1.5rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--panel)}
-.stat b{display:block;font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--gold-300);line-height:1}
+.stat b{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--bright);line-height:1}
 .stat span{display:block;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 @media(max-width:720px){.stats{grid-template-columns:1fr 1fr}}
 
@@ -124,14 +124,14 @@ h2 em{font-style:italic;font-weight:400;color:var(--gold-300)}
 .member{display:flex;gap:1.1rem;align-items:flex-start;padding:1.5rem;border:1px solid var(--border);border-radius:10px;background:var(--panel);transition:border-color .25s,transform .25s}
 .member:hover{border-color:var(--border-soft);transform:translateY(-2px)}
 .avatar{width:48px;height:48px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;background:linear-gradient(135deg,#1d1d24,#14141a);border:1px solid var(--border)}
-.member b{display:block;font-size:1.02rem;color:var(--bright)}
+.member b{display:block;font-size:.95rem;color:var(--bright);font-weight:600}
 .member .role{color:var(--gold-300);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
 .member p{color:var(--dim);font-size:.88rem;margin-top:.35rem;line-height:1.6}
 @media(max-width:720px){.family-grid{grid-template-columns:1fr}}
 
 /* PRINCIPLES — monumentaaliset lainaukset */
 .principles{display:grid;gap:2.5rem;max-width:820px}
-.principle{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.4;color:var(--text);border-left:2px solid var(--gold-500);padding-left:1.6rem}
+.principle{font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.5;color:var(--text);border-left:2px solid var(--gold-500);padding-left:1.6rem}
 .principle .n{display:block;font-family:'JetBrains Mono',monospace;font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-300);margin-bottom:.8rem}
 
 /* CONTACT */
@@ -139,7 +139,7 @@ h2 em{font-style:italic;font-weight:400;color:var(--gold-300)}
 form{display:grid;gap:.8rem}
 input,textarea{width:100%;background:var(--panel);border:1px solid var(--border);color:var(--text);padding:.9rem 1rem;border-radius:6px;font:inherit;outline:none;transition:border-color .2s}
 input:focus,textarea:focus{border-color:var(--gold-500)}
-button.submit{justify-self:start;cursor:pointer;border:none;font-family:'Manrope',sans-serif}
+button.submit{justify-self:start;cursor:pointer;border:none;font-family:'Inter',sans-serif}
 .contact-note{color:var(--dim);font-size:.9rem;line-height:1.8}
 .contact-note b{color:var(--text)}
 @media(max-width:720px){.contact-grid{grid-template-columns:1fr}}
@@ -148,7 +148,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
 .foot-in a{color:var(--dim);text-decoration:none}
 .foot-in a:hover{color:var(--gold-300)}
-.sig{font-family:'Fraunces',serif;font-style:italic;color:var(--gold-300);font-size:1rem}
+.sig{font-family:'Inter',sans-serif;color:var(--dim);font-size:.9rem}
 
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:translateY(0)}
@@ -158,7 +158,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 .proof-demo{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;margin-top:1rem}
 .proof-stage{position:relative;border:1px solid var(--border);border-radius:14px;background:var(--panel);padding:2rem;min-height:340px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .proof-stage::before{content:'';position:absolute;inset:0;background:radial-gradient(closest-side at 50% 0%,rgba(199,167,106,.06),transparent)}
-.claim{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--bright);margin-bottom:1.4rem;position:relative}
+.claim{font-family:'Inter',sans-serif;font-weight:500;font-size:1.15rem;color:var(--bright);margin-bottom:1.4rem;position:relative}
 .claim .id{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold-300);letter-spacing:.08em;display:block;margin-bottom:.4rem}
 .claim .id b{color:var(--ok)}
 .ledger{display:flex;flex-direction:column;gap:.5rem;position:relative}
@@ -214,28 +214,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     <div class="hero-cta">
       <a class="btn btn-gold" href="#contact">Work with us</a>
       <a class="btn btn-ghost" href="https://github.com/Sisuthros/Aethel">Read Aethel →</a>
-    </div>
-    <div class="seal-wrap">
-      <div class="seal">
-        <svg viewBox="0 0 200 200">
-          <circle class="seal-ring outer" cx="100" cy="100" r="96"/>
-          <circle class="seal-ring" cx="100" cy="100" r="82"/>
-          <circle class="seal-ring" cx="100" cy="100" r="68"/>
-          <g class="seal-tick">
-            <line x1="100" y1="4" x2="100" y2="18"/>
-            <line x1="100" y1="182" x2="100" y2="196"/>
-            <line x1="4" y1="100" x2="18" y2="100"/>
-            <line x1="182" y1="100" x2="196" y2="100"/>
-          </g>
-          <defs>
-            <path id="circ" d="M 100,100 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"/>
-          </defs>
-          <text font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="3" fill="#c7a76a">
-            <textPath href="#circ">SIGNED · VERIFIED · BUDGETED · BOUNDED ·</textPath>
-          </text>
-        </svg>
-        <div class="check">✓</div>
-      </div>
     </div>
   </div>
 </header>
