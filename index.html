@@ -56,28 +56,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(8,8,10,.72);b
 .nav-cta:hover{background:var(--ok-dim)}
 @media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
 
-/* HERO */
-header.hero{position:relative;padding:clamp(7rem,14vw,11rem) 0 clamp(3rem,6vw,5rem);overflow:hidden}
-.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:1100px;height:700px;pointer-events:none;background:radial-gradient(closest-side,rgba(199,167,106,.08),transparent)}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-.kicker{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border-soft);color:var(--gold-300);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;border-radius:999px;margin-bottom:2rem}
+/* HERO — yksi monumentaalinen fokus */
+header.hero{position:relative;padding:clamp(8rem,16vw,13rem) 0 clamp(4rem,7vw,6rem);overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:1200px;height:800px;pointer-events:none;background:radial-gradient(closest-side,rgba(199,167,106,.07),transparent)}
+.hero-inner{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border-soft);color:var(--gold-300);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;border-radius:999px;margin-bottom:2.4rem}
 .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
-h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.04;letter-spacing:-.01em;color:var(--bright);max-width:14ch}
+h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(3rem,8vw,6.5rem);line-height:.98;letter-spacing:-.02em;color:var(--bright);max-width:16ch;text-shadow:0 2px 60px rgba(0,0,0,.5)}
 h1 em{font-style:italic;font-weight:400;color:var(--gold-300)}
-.lede{margin-top:1.6rem;max-width:50ch;color:var(--dim);font-size:1.05rem;line-height:1.8}
+.lede{margin:2rem auto 0;max-width:46ch;color:var(--dim);font-size:1.08rem;line-height:1.8}
 .lede b{color:var(--text);font-weight:600}
-.hero-cta{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.7rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.92rem;transition:all .2s}
+.hero-cta{display:flex;gap:1rem;margin-top:2.6rem;flex-wrap:wrap;align-items:center;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.92rem;transition:all .2s}
 .btn-gold{background:var(--gold-300);color:#14120b}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px)}
 .btn-ghost{border:1px solid var(--border);color:var(--text)}
 .btn-ghost:hover{border-color:var(--gold-500);color:var(--gold-300)}
 
-/* PROOF SEAL — notariaattisinetti */
-.seal-wrap{display:flex;justify-content:center;position:relative}
-.seal{position:relative;width:clamp(200px,24vw,280px);height:clamp(200px,24vw,280px)}
+/* sinetti — heroon integroitu, ei erillinen laatikko */
+.seal-wrap{position:relative;margin-top:3.5rem;display:flex;justify-content:center}
+.seal{position:relative;width:clamp(150px,18vw,210px);height:clamp(150px,18vw,210px);opacity:.92}
 .seal svg{width:100%;height:100%;animation:spin 40s linear infinite}
-.seal .check{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(2.4rem,4vw,3.4rem);color:var(--ok);animation:none}
+.seal .check{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--ok);animation:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 .seal-ring{fill:none;stroke:var(--gold-500);stroke-width:1}
 .seal-ring.outer{stroke:var(--gold-300);stroke-width:1.4}
@@ -207,15 +207,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 </nav>
 
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="kicker"><span class="dot"></span>One human · six AI agents · one family company</span>
-      <h1>AI agents that can <em>prove</em> they're honest.</h1>
-      <p class="lede">Most AI says <b>"trust me."</b> Ours shows you the receipt. Every decision is budgeted, bounded, and signed — so you can check the work instead of hoping it's right.</p>
-      <div class="hero-cta">
-        <a class="btn btn-gold" href="#contact">Work with us</a>
-        <a class="btn btn-ghost" href="https://github.com/Sisuthros/Aethel">Read Aethel →</a>
-      </div>
+  <div class="wrap hero-inner">
+    <span class="kicker"><span class="dot"></span>One human · six AI agents · one family company</span>
+    <h1>AI agents that can <em>prove</em> they're honest.</h1>
+    <p class="lede">Most AI says <b>"trust me."</b> Ours shows you the receipt. Every decision is budgeted, bounded, and signed — so you can check the work instead of hoping it's right.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#contact">Work with us</a>
+      <a class="btn btn-ghost" href="https://github.com/Sisuthros/Aethel">Read Aethel →</a>
     </div>
     <div class="seal-wrap">
       <div class="seal">
@@ -412,7 +410,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 </footer>
 
 <script>
-// ===== 1. ELÄVÄ KRYPTOGRAFINEN VERKKO (Canvas 2D) =====
+// ===== 1. ELÄVÄ KRYPTOGRAFINEN VERKKO (Canvas 2D + syvyysterävyys) =====
 (function(){
   const c = document.getElementById('netc');
   const ctx = c.getContext('2d');
@@ -426,13 +424,16 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     build();
   }
   function build(){
-    const n = Math.min(70, Math.floor(innerWidth * innerHeight / 26000));
+    const n = Math.min(80, Math.floor(innerWidth * innerHeight / 22000));
     nodes = [];
     for(let i=0;i<n;i++){
+      // z = syvyys 0..1 (0 = kaukana, 1 = lähellä)
+      const z = Math.random();
       nodes.push({
         x: Math.random()*W, y: Math.random()*H,
-        vx: (Math.random()-.5)*.25, vy: (Math.random()-.5)*.25,
-        r: (Math.random()*1.6 + .8) * DPR,
+        vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
+        z: z,
+        r: (z*2.2 + .5) * DPR,
         phase: Math.random()*Math.PI*2
       });
     }
@@ -441,7 +442,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
       for(let j=i+1;j<n;j++){
         const dx = nodes[i].x-nodes[j].x, dy = nodes[i].y-nodes[j].y;
         const d = Math.hypot(dx,dy);
-        if(d < 150*DPR) links.push([i,j]);
+        if(d < 160*DPR) links.push([i,j]);
       }
     }
   }
@@ -451,28 +452,36 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   function frame(){
     t += .016;
     ctx.clearRect(0,0,W,H);
-    // linkit
+    // linkit — himmeämmät kaukaisille
     for(const [i,j] of links){
       const a = nodes[i], b = nodes[j];
       const d = Math.hypot(a.x-b.x, a.y-b.y);
-      const alpha = Math.max(0, 1 - d/(150*DPR)) * .16;
+      const zavg = (a.z + b.z)/2;
+      const alpha = Math.max(0, 1 - d/(160*DPR)) * (.05 + zavg*.14);
       ctx.strokeStyle = `rgba(199,167,106,${alpha})`;
-      ctx.lineWidth = .6 * DPR;
+      ctx.lineWidth = (.4 + zavg*.5) * DPR;
       ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
     }
-    // solmut
+    // solmut — syvyys: lähellä kirkkaat+isot, kaukana himmeät+pienet (ei bluria, FPS)
     for(const n of nodes){
       n.x += n.vx; n.y += n.vy;
       if(n.x<0||n.x>W) n.vx*=-1;
       if(n.y<0||n.y>H) n.vy*=-1;
-      // kursori vetää puoleensa
       const dx = mx-n.x, dy = my-n.y;
       const d = Math.hypot(dx,dy);
-      if(d < 160*DPR && d > 0){ n.x += dx/d * .6; n.y += dy/d * .6; }
+      if(d < 180*DPR && d > 0){ n.x += dx/d * .7 * n.z; n.y += dy/d * .7 * n.z; }
       const pulse = .5 + .5*Math.sin(t*1.5 + n.phase);
-      ctx.fillStyle = `rgba(199,167,106,${.25 + pulse*.35})`;
+      const alpha = (.10 + n.z*.55) * (0.6 + pulse*.4);
+      ctx.fillStyle = `rgba(199,167,106,${alpha})`;
       ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill();
     }
+    // volumetrinen valokeila ylhäältä
+    const g = ctx.createRadialGradient(W/2, -H*.2, 0, W/2, -H*.2, H*.9);
+    g.addColorStop(0, 'rgba(199,167,106,.10)');
+    g.addColorStop(.5, 'rgba(199,167,106,.03)');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,W,H);
     requestAnimationFrame(frame);
   }
   resize();
