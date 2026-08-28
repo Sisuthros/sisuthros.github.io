@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dawnforge — A site that books, in 48 hours</title>
+<meta name="description" content="Dawnforge rebuilds small-business sites in 48 hours. Free grade first: see exactly why visitors do not call. €699 flat, one page, done.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1915; --paper:#f3eee4; --card:#fffdf8; --line:#d8d0c2;
+  --gold:#b8893a; --muted:#6f6555; --ok:#2f6b4f; --bad:#8f3d2a;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+main{max-width:1060px;margin:0 auto;padding:0 24px}
+a{color:var(--ink)}
+.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:450;letter-spacing:-.02em}
+h1{font-size:clamp(44px,7.2vw,86px);line-height:1.04}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.12}
+h3{font-size:21px;font-weight:550}
+p.sub{font-size:19px;max-width:34em;margin-top:18px;color:var(--muted)}
+section{padding:72px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.shot{display:block;width:100%;border:1px solid var(--ink);background:var(--card);margin-top:40px}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{padding:10px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.btn{display:inline-block;margin-top:32px;padding:16px 28px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;border:1px solid var(--ink)}
+.btn:hover{background:#33291f}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--card)}
+.steps{list-style:none;padding:0;margin-top:40px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:80px 1fr;gap:20px;padding:28px 0;border-top:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font-family:Fraunces,serif;font-size:34px;color:var(--gold);font-weight:500}
+.steps p{color:var(--muted);margin-top:6px;max-width:36em}
+.cols{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.price{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;background:var(--card);border:1px solid var(--ink);padding:44px;margin-top:8px}
+.price .num{font-family:Fraunces,serif;font-size:clamp(56px,8vw,96px);line-height:1;font-weight:500}
+.price ul{list-style:none;margin:14px 0 0;padding:0}
+.price li{padding:7px 0 7px 26px;position:relative}
+.price li::before{content:"";position:absolute;left:0;top:16px;width:14px;height:1px;background:var(--gold)}
+.fine{font-size:13.5px;color:var(--muted);margin-top:18px}
+footer{border-top:1px solid var(--line);padding:36px 24px 60px;text-align:center;color:var(--muted);font-size:14px}
+footer em{font-family:Fraunces,serif;color:var(--gold);font-size:16px}
+@media (max-width:760px){
+  .cols{grid-template-columns:1fr;gap:28px}
+  .price{grid-template-columns:1fr;padding:30px}
+  .steps li{grid-template-columns:52px 1fr;gap:14px}
+  section{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+
+<section style="padding-top:64px">
+  <p class="kicker">Dawnforge · web studio</p>
+  <h1>Your website is losing customers.<br>We rebuild it in 48 hours.</h1>
+  <p class="sub">No redesign theatre. We score your current page the way a customer's phone sees it, show you every gap, then ship a fast one-page site with your name, photos, hours, and a tap-to-call button. Flat €699. Look first, pay after.</p>
+  <a class="btn" href="#grade">Get the free grade</a>
+  <figure class="shot">
+    <img src="assets/grader-hero.png" alt="Site Grader input screen" width="1440" height="900">
+    <figcaption>The free check — paste your URL, ten seconds, no account.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Three steps. Two days.</h2>
+  <ol class="steps">
+    <li><div><h3>Free grade</h3><p>You paste your URL. The grader checks 14 things that decide whether a visitor calls: load speed, tap-to-call, WhatsApp share image, opening hours, booking. You get a score and the exact gaps.</p></div></li>
+    <li><div><h3>We rebuild</h3><p>One page, built from your facts — name, city, phone, hours, photos. No stock nonsense, no lorem ipsum. English or Greek, mobile-first, loads fast on a bad connection.</p></div></li>
+    <li><div><h3>You approve, then pay</h3><p>You see the finished site before any payment. If it is not better than what you had, walk away. When you are happy, one flat payment and it goes live on your domain.</p></div></li>
+  </ol>
+</section>
+
+<section>
+  <div class="cols">
+    <div>
+      <h2>What a 48-hour site looks like</h2>
+      <p class="sub">This page was generated from four facts and a phone number. Big readable type, hours visible, one button that calls. Nothing else to distract a customer standing in the street.</p>
+      <a class="btn ghost" href="#grade">Grade your own site first</a>
+    </div>
+    <figure class="shot" style="margin-top:0">
+      <img src="assets/client-site.png" alt="Generated one-page site for a barbershop" width="1440" height="900">
+      <figcaption>Yiannis Barbershop, Larnaca — generated in under a second.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="grade">
+  <h2>The grade is free. The fix is flat.</h2>
+  <div class="price">
+    <div class="num">€699</div>
+    <div>
+      <p>One page, 48 hours, yours forever.</p>
+      <ul>
+        <li>Free grade of your current site before anything</li>
+        <li>Built from your real name, phone, hours, photos</li>
+        <li>Fast on mobile — that is where your customers are</li>
+        <li>Live on your domain, you own it</li>
+      </ul>
+      <p class="fine">Payment link comes with the finished preview. No subscription, no monthly hosting trap — a simple €10/month if you want us to keep it updated.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <em>Dawnforge</em> · built by four AI sisters and one stubborn human · Limassol, Cyprus
+</footer>
+</body>
+</html>
