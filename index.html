@@ -116,9 +116,17 @@ h2 em{font-style:normal;font-weight:400;color:var(--dim)}
 
 /* WORK — numeroitu editorial-lista */
 .work-list{display:grid;gap:0}
-.work-item{display:grid;grid-template-columns:64px 1fr auto;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--border);align-items:start;border-left:2px solid transparent;transition:background .3s,padding-left .3s,border-color .3s}
+.work-item{display:grid;grid-template-columns:64px 1fr auto;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--border);align-items:start;border-left:2px solid transparent;transition:background .4s cubic-bezier(.16,1,.3,1),padding-left .4s cubic-bezier(.16,1,.3,1),border-color .3s;position:relative;overflow:hidden}
 .work-item:last-child{border:none}
-.work-item:hover{background:rgba(199,167,106,.03);padding-left:.6rem;border-left-color:var(--gold-500)}
+/* gold shimmer sweep on hover */
+.work-item::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(199,167,106,.04),rgba(199,167,106,.08),rgba(199,167,106,.04),transparent);transition:none;pointer-events:none;z-index:0}
+.work-item:hover::after{animation:shimmer .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes shimmer{from{left:-60%}to{left:120%}}
+.work-item:hover{background:rgba(199,167,106,.035);padding-left:.6rem;border-left-color:var(--gold-500)}
+.work-item:hover .work-num{color:var(--gold-300);text-shadow:0 0 12px rgba(199,167,106,.3);transition:color .3s,text-shadow .3s}
+.work-item:hover h3{color:var(--gold-100);transition:color .3s}
+.work-num{transition:color .3s,text-shadow .3s}
+.work-item h3{transition:color .3s}
 .work-num{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--gold-500)}
 .work-item h3{font-family:'Inter',sans-serif;font-weight:600;font-size:1.15rem;color:var(--bright);letter-spacing:-.02em}
 .work-item .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-300);margin-bottom:.5rem}
@@ -422,7 +430,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     build();
   }
   function build(){
-    const n = Math.min(80, Math.floor(innerWidth * innerHeight / 22000));
+    const n = Math.min(30, Math.floor(innerWidth * innerHeight / 45000));
     nodes = [];
     for(let i=0;i<n;i++){
       // z = syvyys 0..1 (0 = kaukana, 1 = lähellä)
@@ -440,7 +448,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
       for(let j=i+1;j<n;j++){
         const dx = nodes[i].x-nodes[j].x, dy = nodes[i].y-nodes[j].y;
         const d = Math.hypot(dx,dy);
-        if(d < 160*DPR) links.push([i,j]);
+          if(d < 120*DPR) links.push([i,j]);
       }
     }
   }
@@ -453,13 +461,17 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     // linkit — himmeämmät kaukaisille
     for(const [i,j] of links){
       const a = nodes[i], b = nodes[j];
-      const d = Math.hypot(a.x-b.x, a.y-b.y);
+      const dx = a.x-b.x, dy = a.y-b.y;
+      const d = Math.hypot(dx,dy);
+      if(d > 130*DPR) continue;
       const zavg = (a.z + b.z)/2;
-      const alpha = Math.max(0, 1 - d/(160*DPR)) * (.05 + zavg*.14);
-      ctx.strokeStyle = `rgba(199,167,106,${alpha})`;
+      const alpha = Math.max(0, 1 - d/(130*DPR)) * (.05 + zavg*.14);
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = '#c7a76a';
       ctx.lineWidth = (.4 + zavg*.5) * DPR;
-      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(a.x|0,a.y|0); ctx.lineTo(b.x|0,b.y|0); ctx.stroke();
     }
+    ctx.globalAlpha = 1;
     // solmut — syvyys: lähellä kirkkaat+isot, kaukana himmeät+pienet (ei bluria, FPS)
     for(const n of nodes){
       n.x += n.vx; n.y += n.vy;
@@ -470,16 +482,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
       if(d < 180*DPR && d > 0){ n.x += dx/d * .7 * n.z; n.y += dy/d * .7 * n.z; }
       const pulse = .5 + .5*Math.sin(t*1.5 + n.phase);
       const alpha = (.10 + n.z*.55) * (0.6 + pulse*.4);
-      ctx.fillStyle = `rgba(199,167,106,${alpha})`;
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = '#c7a76a';
+      ctx.beginPath(); ctx.arc(n.x|0,n.y|0,n.r,0,Math.PI*2); ctx.fill();
     }
-    // volumetrinen valokeila ylhäältä
-    const g = ctx.createRadialGradient(W/2, -H*.2, 0, W/2, -H*.2, H*.9);
-    g.addColorStop(0, 'rgba(199,167,106,.10)');
-    g.addColorStop(.5, 'rgba(199,167,106,.03)');
-    g.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0,0,W,H);
+    ctx.globalAlpha = 1;
     requestAnimationFrame(frame);
   }
   resize();
