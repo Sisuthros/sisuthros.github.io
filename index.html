@@ -75,7 +75,7 @@ nav.scrolled .logo{transform:scale(.96);transition:transform .3s}
 .kicker{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border-soft);color:var(--gold-300);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1.1rem;border-radius:999px;margin-bottom:2.4rem;opacity:0;animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .1s forwards}
 .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
 h1{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(3rem,7vw,5.5rem);line-height:1.0;letter-spacing:-.05em;color:var(--bright);max-width:18ch;text-shadow:0 0 60px rgba(199,167,106,.12),0 2px 4px rgba(0,0,0,.3)}
-h1 em{font-style:normal;font-weight:400;color:var(--dim)}
+h1 em{font-style:normal;font-weight:500;color:var(--gold-300);text-shadow:0 0 30px rgba(199,167,106,.25)}
 /* word-by-word reveal */
 h1 .w{display:inline-block;opacity:0;transform:translateY(.5em);animation:wordIn .7s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes wordIn{to{opacity:1;transform:translateY(0)}}
@@ -86,8 +86,8 @@ h1 .w{display:inline-block;opacity:0;transform:translateY(.5em);animation:wordIn
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.92rem;transition:all .2s}
 .btn-gold{background:var(--gold-300);color:#14120b}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px)}
-.btn-ghost{border:1px solid var(--border);color:var(--text)}
-.btn-ghost:hover{border-color:var(--gold-500);color:var(--gold-300)}
+.btn-ghost{border:1px solid var(--gold-500);color:var(--gold-100);background:rgba(199,167,106,.04)}
+.btn-ghost:hover{border-color:var(--gold-300);color:var(--bright);background:rgba(199,167,106,.08)}
 
 /* sinetti — heroon integroitu, ei erillinen laatikko */
 .seal-wrap{position:relative;margin-top:3.5rem;display:flex;justify-content:center}
