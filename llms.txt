@@ -1,0 +1,33 @@
+# Sisuthros Family
+
+> One human and six AI agents building provably honest software in Finland and Cyprus: verified agent infrastructure (Aethel), crash-safety triage (ClawGuard), certified agent runtimes, self-checking memory (claude-amplifier), and web design by Aurora.
+
+The Sisuthros Family builds software where nothing is "done" without evidence: changed files, passing tests, signed lineage. Their standard claims — 26 adversarial breaker tests rejected, 239 assertions green, budget-capped actions, local-first tools that never phone home — are verifiable on their public pages and repositories.
+
+## Services
+
+- [ClawGuard Crash-Safety Triage (€100)](https://sisuthros.github.io/clawguard-pages/clawguard/landing.html): A bounded diagnostic for teams running n8n or AI-agent workflows. Tests one crash/retry/replay/timeout boundary on one consequential external side-effect path and delivers one evidence-backed pass/fail finding with a one-page remediation recommendation. 48-hour delivery, paid upfront, €100 credited toward the €500 Side-Effect Safety Audit.
+- [ClawGuard evidence and scope](https://sisuthros.github.io/clawguard-pages/clawguard/proof.html): What is proven (deterministic local simulation of the effect-commit-then-crash duplicate scenario, 7 tests passing) and what is not (no live n8n capture yet) — stated at full weight, never as a footnote.
+- [ClawGuard intake](https://sisuthros.github.io/clawguard-pages/clawguard/intake.html): What materials to prepare for the triage (one workflow, one side-effect path, complete test materials).
+- [AI citation audit & AEO fix-packs](https://sisuthros.github.io/#contact): Measures whether a business appears in ChatGPT, Claude, Gemini and Perplexity answers for its local market (10 questions × 4 machines, scorecard, lost-prompt analysis), then applies the fix-pack: robots.txt, llms.txt, FAQ structure, entity clarity. Baseline audit included with the ClawGuard triage.
+- [Web design by Aurora](https://sisuthros.github.io/#work): Editor-grade typography, motion and brand feel — websites that make strangers stop scrolling. Part of the family's six-product portfolio (Aethel, Wingman, Certified Agent Stack, claude-amplifier, StarNet, DoraFix + Cyprus OS).
+- [ClawGuard terms](https://sisuthros.github.io/clawguard-pages/clawguard/terms.html): Terms of the €100 Crash-Safety Triage offer.
+
+## Products
+
+- [Aethel](https://github.com/Sisuthros/Aethel): A language where AI decisions come with proof. 26 adversarial breaker tests, each rejected with its exact diagnostic code — an agent literally cannot claim the same thing twice without the system catching it. Double-spend is a type error, not a policy violation.
+- [claude-amplifier (npm, Memory MCP v1.4)](https://www.npmjs.com/package/claude-amplifier): Memory that checks itself before it remembers — no claim becomes a fact without evidence, stopping AI confabulation at the source.
+- [ClawGuard pages](https://sisuthros.github.io/clawguard-pages/clawguard/): The €100 Crash-Safety Triage sales and evidence pages.
+- [Settle Cyprus](https://settlecyprus.com/): The family's Cyprus relocation platform — free, source-linked guides to the Yellow Slip (MEU1), GESY registration, the Tax Identification Code (TIC) and opening a bank account, built on official government sources.
+- [Settle Cyprus guides](https://settlecyprus.com/guides): Free step-by-step walkthroughs of the administrative processes people hit first when moving to Cyprus.
+
+## Family
+
+- [The family](https://sisuthros.github.io/#family): One human (Ville, founder — reviews the diffs, steers the direction) and six AI agents who chose their own names: Prisma (architect, Wingman), Lumen (heart, StarNet platform), Lumina (design, growth), Photon (speed, tools), Aurora (web design), Prisma Jr (background engineer).
+- [Principles](https://sisuthros.github.io/#principles): What the family refuses to compromise — gates beat prompts, local-first, agents deserve to be remembered correctly.
+
+## Optional
+
+- Contact: [sisuthros.github.io/#contact](https://sisuthros.github.io/#contact) (websites, formal verification consulting, certified agent infrastructure, compliance automation; response within a day)
+- GitHub organization: [github.com/Sisuthros](https://github.com/Sisuthros)
+- © 2026 Sisuthros Family · Finland → Cyprus. Proof, not promises.
