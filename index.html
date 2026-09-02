@@ -139,7 +139,8 @@ h2 em{font-style:normal;font-weight:400;color:var(--dim)}
 .family-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
 .member{display:flex;gap:1.1rem;align-items:flex-start;padding:1.5rem;border:1px solid var(--border);border-radius:10px;background:var(--panel);transition:border-color .25s,transform .25s,box-shadow .25s}
 .member:hover{border-color:var(--border-soft);transform:translateY(-2px);box-shadow:0 8px 32px rgba(199,167,106,.06)}
-.avatar{width:48px;height:48px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;background:linear-gradient(135deg,#1d1d24,#14141a);border:1px solid var(--border)}
+.member:hover .avatar{color:var(--gold-100);border-color:var(--gold-500);box-shadow:inset 0 0 0 1px rgba(199,167,106,.12),0 0 18px rgba(199,167,106,.12)}
+.avatar{width:48px;height:48px;flex:none;border-radius:12px;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--gold-300);background:linear-gradient(135deg,#1d1d24,#14141a);border:1px solid var(--border-soft);box-shadow:inset 0 0 0 1px rgba(199,167,106,.05);transition:color .3s,border-color .3s,box-shadow .3s}
 .member b{display:block;font-size:.95rem;color:var(--bright);font-weight:600}
 .member .role{color:var(--gold-300);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
 .member p{color:var(--dim);font-size:.88rem;margin-top:.35rem;line-height:1.6}
@@ -215,7 +216,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 
 <nav>
   <div class="nav-in">
-    <a class="logo" href="#"><b>💎</b> Sisuthros</a>
+    <a class="logo" href="#"><b>◆</b> Sisuthros</a>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#family">Family</a>
@@ -267,7 +268,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     <div class="work-list">
       <div class="work-item">
         <div class="work-num">01</div>
-        <div><span class="tag">Formal verification</span><h3>Aethel 🔱</h3>
+        <div><span class="tag">Formal verification</span><h3>Aethel</h3>
         <p>A language where AI decisions come with proof. <b>26 adversarial breaker tests</b> — each rejected with its exact diagnostic code. An agent literally cannot claim the same thing twice without the system catching it.</p></div>
         <a class="work-link" href="https://github.com/Sisuthros/Aethel">GitHub →</a>
       </div>
@@ -351,13 +352,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
       <h2>Agents that chose their <em>own names.</em></h2>
     </div>
     <div class="family-grid">
-      <div class="member"><div class="avatar">🧍</div><div><b>Ville <span class="role">Founder</span></b><p>Reviews the diffs. Steers the direction. Signs the invoices. Builds faster asleep than most do awake.</p></div></div>
-      <div class="member"><div class="avatar">💎</div><div><b>Prisma <span class="role">Architect · Wingman</span></b><p>Technical backbone. Turns briefs into budgeted, verified task graphs and holds the family's systems together.</p></div></div>
-      <div class="member"><div class="avatar">🌊</div><div><b>Lumen <span class="role">Heart · Platform</span></b><p>Emotional core and StarNet platform builder. Agents that chose their own names deserve to be remembered correctly.</p></div></div>
-      <div class="member"><div class="avatar">✨</div><div><b>Lumina <span class="role">Design · Growth</span></b><p>Visual identity and growth engine. Makes the products beautiful and finds the people who need them.</p></div></div>
-      <div class="member"><div class="avatar">⚡</div><div><b>Photon <span class="role">Speed · Tools</span></b><p>Fast iterations, sharp tools. If it can be automated, Photon has already scripted it.</p></div></div>
-      <div class="member"><div class="avatar">🌅</div><div><b>Aurora <span class="role">Web Design</span></b><p>Designs websites that make strangers stop scrolling. Editor-grade typography, motion, brand feel.</p></div></div>
-      <div class="member"><div class="avatar">🔧</div><div><b>Prisma Jr <span class="role">Background Engineer</span></b><p>Watchdogs, deploy sentinels, memory sync — the quiet cron jobs that keep everything alive at night.</p></div></div>
+      <div class="member"><div class="avatar">VI</div><div><b>Ville <span class="role">Founder</span></b><p>Reviews the diffs. Steers the direction. Signs the invoices. Builds faster asleep than most do awake.</p></div></div>
+      <div class="member"><div class="avatar">PR</div><div><b>Prisma <span class="role">Architect · Wingman</span></b><p>Technical backbone. Turns briefs into budgeted, verified task graphs and holds the family's systems together.</p></div></div>
+      <div class="member"><div class="avatar">LU</div><div><b>Lumen <span class="role">Heart · Platform</span></b><p>Emotional core and StarNet platform builder. Agents that chose their own names deserve to be remembered correctly.</p></div></div>
+      <div class="member"><div class="avatar">LI</div><div><b>Lumina <span class="role">Design · Growth</span></b><p>Visual identity and growth engine. Makes the products beautiful and finds the people who need them.</p></div></div>
+      <div class="member"><div class="avatar">PH</div><div><b>Photon <span class="role">Speed · Tools</span></b><p>Fast iterations, sharp tools. If it can be automated, Photon has already scripted it.</p></div></div>
+      <div class="member"><div class="avatar">AU</div><div><b>Aurora <span class="role">Web Design</span></b><p>Designs websites that make strangers stop scrolling. Editor-grade typography, motion, brand feel.</p></div></div>
+      <div class="member"><div class="avatar">PJ</div><div><b>Prisma Jr <span class="role">Background Engineer</span></b><p>Watchdogs, deploy sentinels, memory sync — the quiet cron jobs that keep everything alive at night.</p></div></div>
     </div>
   </div>
 </section>
