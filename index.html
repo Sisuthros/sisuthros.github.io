@@ -437,7 +437,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   const c = document.getElementById('netc');
   const ctx = c.getContext('2d');
   let W, H, nodes = [], links = [];
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+  const DPR = 1; // subtle background — retina sharpness not needed, halves pixel work
   function resize(){
     W = c.width = innerWidth * DPR;
     H = c.height = innerHeight * DPR;
@@ -446,7 +446,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     build();
   }
   function build(){
-    const n = Math.min(30, Math.floor(innerWidth * innerHeight / 45000));
+    const n = Math.min(18, Math.floor(innerWidth * innerHeight / 60000));
     nodes = [];
     for(let i=0;i<n;i++){
       // z = syvyys 0..1 (0 = kaukana, 1 = lähellä)
@@ -460,11 +460,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
       });
     }
     links = [];
+    const L2 = (100*DPR)*(100*DPR); // squared link distance — avoid hypot in the O(n²) pass
     for(let i=0;i<n;i++){
       for(let j=i+1;j<n;j++){
         const dx = nodes[i].x-nodes[j].x, dy = nodes[i].y-nodes[j].y;
-        const d = Math.hypot(dx,dy);
-          if(d < 120*DPR) links.push([i,j]);
+        if(dx*dx + dy*dy < L2) links.push([i,j]);
       }
     }
   }
@@ -475,11 +475,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     t += .016;
     ctx.clearRect(0,0,W,H);
     // linkit — himmeämmät kaukaisille
+    const LD2 = (130*DPR)*(130*DPR);
     for(const [i,j] of links){
       const a = nodes[i], b = nodes[j];
       const dx = a.x-b.x, dy = a.y-b.y;
-      const d = Math.hypot(dx,dy);
-      if(d > 130*DPR) continue;
+      const d2 = dx*dx + dy*dy;
+      if(d2 > LD2) continue;
+      const d = Math.sqrt(d2);
       const zavg = (a.z + b.z)/2;
       const alpha = Math.max(0, 1 - d/(130*DPR)) * (.05 + zavg*.14);
       ctx.globalAlpha = alpha;
@@ -657,6 +659,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
       const orbs = document.querySelectorAll('.orb');
       const nav = document.querySelector('nav');
       let hmx = 0, hmy = 0, scrollY = 0;
+      let lastY = -1, lastOp = -1, running = false;
       // show orbs after short delay
       setTimeout(() => orbs.forEach(o => o.classList.add('show')), 300);
       // mouse tracking for orbs
@@ -668,6 +671,9 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
       addEventListener('scroll', () => {
         scrollY = window.scrollY;
         nav.classList.toggle('scrolled', scrollY > 80);
+        // only run the RAF loop while the hero is on screen
+        const inView = scrollY < hero.offsetHeight;
+        if(inView && !running){ running = true; requestAnimationFrame(frame); }
       }, {passive:true});
       // animation loop — orbs drift + hero content lifts on scroll
       function frame(){
@@ -681,16 +687,19 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
           const dy = Math.cos(t * .7 + i * 1.8) * 10;
           orb.style.transform = 'translate('+(ox+dx)+'px,'+(oy+dy)+'px)';
         });
-        // hero content parallax — single wrapper, no animation conflict
+        // hero content parallax — write only when the value actually changes
         if(heroInner){
           const clamp = Math.min(scrollY, 900);
-          const y = clamp * .18;
-          const op = 1 - clamp / 650;
-          heroInner.style.transform = 'translate3d(0,'+y+'px,0)';
-          heroInner.style.opacity = Math.max(0, op);
+          const y = Math.round(clamp * .18);
+          const op = Math.max(0, 1 - clamp / 650);
+          if(y !== lastY){ heroInner.style.transform = 'translate3d(0,'+y+'px,0)'; lastY = y; }
+          if(op !== lastOp){ heroInner.style.opacity = op; lastOp = op; }
         }
-        requestAnimationFrame(frame);
+        // stop the loop once the hero has scrolled fully out of view
+        if(scrollY < hero.offsetHeight){ requestAnimationFrame(frame); }
+        else { running = false; }
       }
+      running = true;
       requestAnimationFrame(frame);
     })();
 </script>
