@@ -35,13 +35,6 @@ body::before{content:'';position:fixed;inset:0;z-index:60;pointer-events:none;op
 /* scroll progress */
 #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:70;background:linear-gradient(90deg,var(--gold-500),var(--gold-100));box-shadow:0 0 12px rgba(199,167,106,.5)}
 
-/* custom cursor */
-.cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:99;border-radius:50%;transform:translate(-50%,-50%)}
-.cur-dot{width:5px;height:5px;background:var(--gold-300)}
-.cur-ring{width:32px;height:32px;border:1px solid rgba(199,167,106,.45);transition:width .25s,height .25s,border-color .25s}
-.cur-ring.hot{width:54px;height:54px;border-color:var(--gold-300)}
-@media(hover:none){.cur-dot,.cur-ring{display:none}body,a,button{cursor:auto}}
-
 .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
 
 /* NAV */
@@ -235,7 +228,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 <body>
 <div id="net"><canvas id="netc"></canvas></div>
 <div id="progress"></div>
-<div class="cur-dot" id="cd"></div><div class="cur-ring" id="cr"></div>
 
 <nav>
   <div class="nav-in">
@@ -592,16 +584,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   }), {threshold:.5});
   stats.forEach((el,i) => { el.dataset.n = targets[i]; io.observe(el); });
 })();
-
-// ===== 6. CUSTOM CURSOR =====
-const cd=document.getElementById('cd'), cr=document.getElementById('cr');
-let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
-  cd.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
-  cr.classList.toggle('hot',!!e.target.closest('a,button'));
-});
-(function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;
-  cr.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
 
 // ===== 7. REVEAL + STAGGERED CHILDREN =====
 (function(){
