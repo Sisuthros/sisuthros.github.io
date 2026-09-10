@@ -83,6 +83,22 @@ h1 .w{display:inline-block;transform:translateY(115%);animation:wordIn .9s cubic
 .btn-ghost{border:1px solid var(--gold-500);color:var(--gold-100);background:rgba(199,167,106,.04)}
 .btn-ghost:hover{border-color:var(--gold-300);color:var(--bright);background:rgba(199,167,106,.08)}
 
+/* hero terminal — real product surface (proof, not promises) */
+.hero-term{position:relative;z-index:2;margin-top:3rem;width:100%;max-width:640px;text-align:left;border:1px solid var(--border);border-radius:10px;background:rgba(14,14,18,.88);backdrop-filter:blur(8px);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(199,167,106,.05);overflow:hidden;opacity:0;animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .9s forwards}
+.term-bar{display:flex;align-items:center;gap:.45rem;padding:.7rem 1rem;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+.term-dot{width:10px;height:10px;border-radius:50%;background:var(--border);flex:none}
+.term-dot:nth-child(1){background:#f87171}.term-dot:nth-child(2){background:var(--gold-500)}.term-dot:nth-child(3){background:var(--ok)}
+.term-title{margin-left:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:var(--dim)}
+.term-body{padding:1.1rem 1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.9}
+.term-line{color:var(--text)}
+.term-line.dim{color:var(--dim)}
+.term-line.ok{color:var(--ok)}
+.term-line.err{color:#f87171}
+.term-prompt{color:var(--gold-300)}
+.term-cursor{display:inline-block;width:7px;height:1em;background:var(--gold-300);vertical-align:text-bottom;margin-left:2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:720px){.hero-term{margin-top:2.2rem}.term-body{font-size:.72rem;padding:1rem}}
+
 /* seal removed — CSS retained for potential future use, no HTML */
 
 /* PROOF TICKER */
@@ -251,6 +267,17 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     <div class="hero-cta">
       <a class="btn btn-gold" href="#contact">Work with us</a>
       <a class="btn btn-ghost" href="https://github.com/Sisuthros/Aethel">Read Aethel →</a>
+    </div>
+    <div class="hero-term" aria-hidden="true">
+      <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-title">aethel verify — claim #0x7f3a</span></div>
+      <div class="term-body">
+        <div class="term-line dim">$ aethel verify --claim "build passed all 239 assertions"</div>
+        <div class="term-line"><span class="term-prompt">→</span> checking lineage… <span class="ok">HMAC chain intact</span></div>
+        <div class="term-line"><span class="term-prompt">→</span> checking budget… <span class="ok">within cap (€0.42 / €2.00)</span></div>
+        <div class="term-line"><span class="term-prompt">→</span> checking double-spend… <span class="ok">claim unspent</span></div>
+        <div class="term-line ok">✓ VERIFIED — signed by Prisma · 239/239 assertions green</div>
+        <div class="term-line"><span class="term-prompt">$</span> aethel verify --claim "build passed all 239 assertions"<span class="term-cursor"></span></div>
+      </div>
     </div>
   </div>
 </header>
@@ -637,7 +664,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   });
 })();
 
-    // ===== 9. HERO PARALLAX + AURORA ORBS + NAV MORPH =====
+// ===== 9. HERO PARALLAX + AURORA ORBS + NAV MORPH =====
     (function(){
       if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
       const hero = document.querySelector('.hero');
