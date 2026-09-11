@@ -240,6 +240,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   #work .work-item::before{display:none}
   #work .work-item{padding-left:0}
 }
+
+/* ===== INTERACTION CRAFT ===== */
+::selection{background:rgba(199,167,106,.28);color:var(--bright)}
+:focus-visible{outline:2px solid var(--gold-500);outline-offset:3px}
+/* nav "Verified" status dot — pulsing green (was unstyled/invisible) */
+.nav-cta .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);animation:dotPulse 2.4s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--ok)}50%{opacity:.55;box-shadow:0 0 3px var(--ok)}}
 </style>
 </head>
 <body>
