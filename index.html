@@ -35,6 +35,17 @@ body::before{content:'';position:fixed;inset:0;z-index:60;pointer-events:none;op
 /* scroll progress */
 #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:70;background:linear-gradient(90deg,var(--gold-500),var(--gold-100));box-shadow:0 0 12px rgba(199,167,106,.5)}
 
+/* cursor light — subtle radial glow follows pointer, anti-AI craft signal */
+#cursor-light{
+  position:fixed;width:500px;height:500px;border-radius:50%;
+  pointer-events:none;z-index:1;opacity:0;
+  background:radial-gradient(circle,rgba(199,167,106,.06) 0%,rgba(199,167,106,.02) 35%,transparent 70%);
+  mix-blend-mode:screen;transform:translate(-50%,-50%);
+  transition:opacity .6s ease;
+}
+body:hover #cursor-light{opacity:1}
+@media(hover:none){#cursor-light{display:none}}
+
 .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
 
 /* NAV */
@@ -252,6 +263,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 <body>
 <div id="net"><canvas id="netc"></canvas></div>
 <div id="progress"></div>
+<div id="cursor-light" aria-hidden="true"></div>
 
 <nav>
   <div class="nav-in">
@@ -548,7 +560,27 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   }, {passive:true});
 })();
 
-// ===== 3. AETHEL-SIMULAATTORI =====
+// ===== 3. CURSOR LIGHT — radial glow follows pointer =====
+(function(){
+  if(matchMedia('(hover:none)').matches) return;
+  const el = document.getElementById('cursor-light');
+  if(!el) return;
+  let cx = -600, cy = -600, tx = -600, ty = -600, running = false;
+  document.addEventListener('mousemove', e => {
+    tx = e.clientX; ty = e.clientY;
+    if(!running){ running = true; requestAnimationFrame(frame); }
+  }, {passive:true});
+  function frame(){
+    const dx = tx - cx, dy = ty - cy;
+    // settle: stop RAF when close enough to target
+    if(Math.abs(dx) < .5 && Math.abs(dy) < .5){ cx = tx; cy = ty; running = false; }
+    else { cx += dx * .12; cy += dy * .12; requestAnimationFrame(frame); }
+    el.style.left = (cx|0) + 'px';
+    el.style.top = (cy|0) + 'px';
+  }
+})();
+
+// ===== 4. AETHEL-SIMULAATTORI =====
 (function(){
   const ledger = document.getElementById('ledger');
   const verdict = document.getElementById('verdict');
@@ -586,7 +618,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   });
 })();
 
-// ===== 4. MAGNEETTISET NAPIT =====
+// ===== 5. MAGNEETTISET NAPIT =====
 (function(){
   if(matchMedia('(hover:none)').matches) return;
   document.querySelectorAll('.btn, .proof-btn').forEach(btn => {
@@ -600,7 +632,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   });
 })();
 
-// ===== 5. COUNT-UP NUMEROT =====
+// ===== 6. COUNT-UP NUMEROT =====
 (function(){
   const stats = document.querySelectorAll('.stat b');
   const targets = [26, 239, 6, 1];
