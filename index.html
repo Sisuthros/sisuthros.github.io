@@ -84,6 +84,10 @@ h1 em{font-style:normal;font-weight:500;color:var(--gold-300);text-shadow:0 0 30
 h1 .w-mask{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.2em}
 h1 .w{display:inline-block;transform:translateY(115%);animation:wordIn .9s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes wordIn{to{transform:translateY(0)}}
+/* h2 word reveal — triggered by .in on parent section */
+h2 .hw{display:inline-block;opacity:0;transform:translateY(.6em);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+section.in h2 .hw{opacity:1;transform:translateY(0)}
+h2 .hw em{font-style:normal;color:var(--dim)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .lede{margin:2rem auto 0;max-width:46ch;color:var(--dim);font-size:1.08rem;line-height:1.8;opacity:0;animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .5s forwards}
 .lede b{color:var(--text);font-weight:600}
@@ -703,6 +707,36 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
   });
 })();
 
+
+// ===== 8b. H2 WORD-BY-WORD REVEAL (triggers when section enters viewport) =====
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  document.querySelectorAll('h2').forEach(function(h2){
+    var parts = [];
+    h2.childNodes.forEach(function(node){
+      if(node.nodeType === 3){ node.textContent.trim().split(/\s+/).forEach(function(w){ if(w) parts.push({t:w, tag:null}); }); }
+      else if(node.nodeType === 1){
+        node.textContent.trim().split(/\s+/).forEach(function(w){ if(w) parts.push({t:w, tag: node.tagName}); });
+      }
+    });
+    if(!parts.length) return;
+    h2.innerHTML = '';
+    parts.forEach(function(p, i){
+      var span = document.createElement('span');
+      span.className = 'hw';
+      span.style.transitionDelay = (i * 55) + 'ms';
+      if(p.tag === 'EM'){
+        var em = document.createElement('em');
+        em.textContent = p.t;
+        span.appendChild(em);
+      } else {
+        span.textContent = p.t;
+      }
+      h2.appendChild(span);
+      h2.appendChild(document.createTextNode(' '));
+    });
+  });
+})();
 // ===== 9. HERO PARALLAX + AURORA ORBS + NAV MORPH =====
     (function(){
       if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
