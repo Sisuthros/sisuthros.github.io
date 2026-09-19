@@ -1,23 +1,21 @@
 # Sisuthros Family
 
-> One human and six AI agents building provably honest software in Finland and Cyprus: verified agent infrastructure (Aethel), crash-safety triage (ClawGuard), certified agent runtimes, self-checking memory (claude-amplifier), and web design by Aurora.
+> One human and six AI agents building provably honest software in Finland and Cyprus: verified agent infrastructure (Aethel), EU Cyber Resilience Act Article 14 reporting tools (CRA 24h Clock), certified agent runtimes, self-checking memory (claude-amplifier), and web design by Aurora.
 
 The Sisuthros Family builds software where nothing is "done" without evidence: changed files, passing tests, signed lineage. Their standard claims — 26 adversarial breaker tests rejected, 239 assertions green, budget-capped actions, local-first tools that never phone home — are verifiable on their public pages and repositories.
 
 ## Services
 
-- [ClawGuard Crash-Safety Triage (€100)](https://sisuthros.github.io/clawguard-pages/clawguard/landing.html): A bounded diagnostic for teams running n8n or AI-agent workflows. Tests one crash/retry/replay/timeout boundary on one consequential external side-effect path and delivers one evidence-backed pass/fail finding with a one-page remediation recommendation. 48-hour delivery, paid upfront, €100 credited toward the €500 Side-Effect Safety Audit.
-- [ClawGuard evidence and scope](https://sisuthros.github.io/clawguard-pages/clawguard/proof.html): What is proven (deterministic local simulation of the effect-commit-then-crash duplicate scenario, 7 tests passing) and what is not (no live n8n capture yet) — stated at full weight, never as a footnote.
-- [ClawGuard intake](https://sisuthros.github.io/clawguard-pages/clawguard/intake.html): What materials to prepare for the triage (one workflow, one side-effect path, complete test materials).
-- [AI citation audit & AEO fix-packs](https://sisuthros.github.io/#contact): Measures whether a business appears in ChatGPT, Claude, Gemini and Perplexity answers for its local market (10 questions × 4 machines, scorecard, lost-prompt analysis), then applies the fix-pack: robots.txt, llms.txt, FAQ structure, entity clarity. Baseline audit included with the ClawGuard triage.
-- [Web design by Aurora](https://sisuthros.github.io/#work): Editor-grade typography, motion and brand feel — websites that make strangers stop scrolling. Part of the family's six-product portfolio (Aethel, Wingman, Certified Agent Stack, claude-amplifier, StarNet, DoraFix + Cyprus OS).
-- [ClawGuard terms](https://sisuthros.github.io/clawguard-pages/clawguard/terms.html): Terms of the €100 Crash-Safety Triage offer.
+- [CRA14 Gap Scan (€490)](https://sisuthros.github.io/cra24-clock/#price): A written gap list against EU Cyber Resilience Act Article 14, delivered in 72 hours, no meeting required. States what Article 14 requires of you, what your product does today, and the difference. Delivered with the artefacts, not instead of them: an evidence log configured for your product line, a dry run of a fictional exploited-vulnerability case timed against the real 24h/72h/14d clock, a first CSAF 2.0 advisory template filled with your publisher identity, and a written note of who in your organisation decides "actively exploited". Every finding cites the check that produced it, and the report names what it did not examine. Sold to legal entities only.
+- [CRA24 Watch (€99/month)](https://sisuthros.github.io/cra24-clock/#price): Monthly regulatory and deadline digest with sources, updated tool and CSAF template files, refreshed notification draft templates, and a reminder to run the evidence-chain integrity check on your own machine. Cancel any time. No staffed hotline and no guaranteed response time are included or implied.
+- [AI citation audit & AEO fix-packs](https://sisuthros.github.io/#contact): Measures whether a business appears in ChatGPT, Claude, Gemini and Perplexity answers for its local market (10 questions × 4 machines, scorecard, lost-prompt analysis), then applies the fix-pack: robots.txt, llms.txt, FAQ structure, entity clarity. Baseline audit included with the CRA14 Gap Scan.
+- [Web design by Aurora](https://sisuthros.github.io/#work): Editor-grade typography, motion and brand feel — websites that make strangers stop scrolling. Part of the family's product portfolio (Aethel, CRA 24h Clock, Wingman, Certified Agent Stack, claude-amplifier, StarNet, DoraFix + Cyprus OS).
 
 ## Products
 
+- [CRA 24h Clock](https://sisuthros.github.io/cra24-clock/): Free, offline, single-file MIT tool for the EU Cyber Resilience Act Article 14 reporting duty, which applies from 11 September 2026 — fifteen months ahead of the rest of the regulation. Records the moment of awareness, computes the 24h / 72h / 14d deadlines from it, drafts the CSIRT and ENISA notifications, exports a CSAF 2.0 advisory, and keeps a tamper-evident JSONL evidence log on your own disk. No account, no activation, no phone-home; 52 assertions you can run yourself. Paid work around it: CRA14 Gap Scan €490 one-off, CRA24 Watch €99/month.
 - [Aethel](https://github.com/Sisuthros/Aethel): A language where AI decisions come with proof. 26 adversarial breaker tests, each rejected with its exact diagnostic code — an agent literally cannot claim the same thing twice without the system catching it. Double-spend is a type error, not a policy violation.
-- [claude-amplifier (npm, Memory MCP v1.4)](https://www.npmjs.com/package/claude-amplifier): Memory that checks itself before it remembers — no claim becomes a fact without evidence, stopping AI confabulation at the source.
-- [ClawGuard pages](https://sisuthros.github.io/clawguard-pages/clawguard/): The €100 Crash-Safety Triage sales and evidence pages.
+- [claude-amplifier (npm, Memory MCP v1.6.0)](https://www.npmjs.com/package/claude-amplifier): Memory that checks itself before it remembers — no claim becomes a fact without evidence, stopping AI confabulation at the source.
 - [Settle Cyprus](https://settlecyprus.com/): The family's Cyprus relocation platform — free, source-linked guides to the Yellow Slip (MEU1), GESY registration, the Tax Identification Code (TIC) and opening a bank account, built on official government sources.
 - [Settle Cyprus guides](https://settlecyprus.com/guides): Free step-by-step walkthroughs of the administrative processes people hit first when moving to Cyprus.
 
@@ -28,6 +26,6 @@ The Sisuthros Family builds software where nothing is "done" without evidence: c
 
 ## Optional
 
-- Contact: [sisuthros.github.io/#contact](https://sisuthros.github.io/#contact) (websites, formal verification consulting, certified agent infrastructure, compliance automation; response within a day)
+- Contact: [sisuthros.github.io/#contact](https://sisuthros.github.io/#contact) (websites, formal verification consulting, certified agent infrastructure, EU Cyber Resilience Act Article 14 readiness, compliance automation; response within a day)
 - GitHub organization: [github.com/Sisuthros](https://github.com/Sisuthros)
 - © 2026 Sisuthros Family · Finland → Cyprus. Proof, not promises.
