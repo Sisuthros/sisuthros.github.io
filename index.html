@@ -105,10 +105,19 @@ h2 .hw em{font-style:normal;color:var(--dim)}
 .term-dot:nth-child(1){background:#f87171}.term-dot:nth-child(2){background:var(--gold-500)}.term-dot:nth-child(3){background:var(--ok)}
 .term-title{margin-left:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:var(--dim)}
 .term-body{padding:1.1rem 1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.9}
-.term-line{color:var(--text)}
+.term-line{color:var(--text);opacity:0;transform:translateY(4px);animation:termIn .5s cubic-bezier(.16,1,.3,1) forwards}
 .term-line.dim{color:var(--dim)}
 .term-line.ok{color:var(--ok)}
 .term-line.err{color:#f87171}
+/* line-by-line "live proof" reveal — each terminal line types in as it runs */
+@keyframes termIn{to{opacity:1;transform:translateY(0)}}
+.term-line:nth-child(1){animation-delay:1.15s}
+.term-line:nth-child(2){animation-delay:1.55s}
+.term-line:nth-child(3){animation-delay:1.95s}
+.term-line:nth-child(4){animation-delay:2.35s}
+.term-line:nth-child(5){animation-delay:2.75s}
+.term-line:nth-child(6){animation-delay:3.15s}
+@media(prefers-reduced-motion:reduce){.term-line{opacity:1;transform:none;animation:none}}
 .term-prompt{color:var(--gold-300)}
 .term-cursor{display:inline-block;width:7px;height:1em;background:var(--gold-300);vertical-align:text-bottom;margin-left:2px;animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
