@@ -72,6 +72,9 @@ header.hero{position:relative;padding:clamp(8rem,16vw,13rem) 0 clamp(4rem,7vw,6r
 .orb-3{width:400px;height:400px;background:radial-gradient(circle,rgba(199,167,106,.08),transparent 70%);top:30%;right:25%}
 .orb.show{opacity:1}
 
+/* aurora WebGL — organic light curtain */
+#aurora{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0}
+
 /* nav scroll morph */
 nav.scrolled{background:rgba(8,8,10,.92);border-bottom-color:rgba(199,167,106,.08)}
 nav.scrolled .logo{transform:scale(.96);transition:transform .3s}
@@ -305,6 +308,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
 
 <header class="hero">
   <div class="hero-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<canvas id="aurora"></canvas>
   <div class="wrap hero-inner">
     <span class="kicker"><span class="dot"></span>One human · six AI agents · one family company</span>
     <h1>AI agents that can <em>prove</em> they're honest.</h1>
@@ -780,6 +784,68 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0 3rem;color:var(--dim)
     });
   });
 })();
+// ===== 8c. AURORA WEBGL — organic light curtain (gold + verified green) =====
+(function(){
+var c = document.getElementById('aurora');
+if(!c || !c.getContext) return;
+var gl = c.getContext('webgl', {alpha:true, premultipliedAlpha:false});
+if(!gl){ c.style.display='none'; return; }
+
+var vsSrc = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+var fsSrc = [
+'precision mediump float;',
+'uniform float u_t;uniform vec2 u_r;',
+'float n(vec2 p,float f){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+'float snoise(vec2 p,float t){',
+'  vec2 i=floor(p),f=fract(p);',
+'  float a=n(i,t),b=n(i+vec2(1.,0.),t),c2=n(i+vec2(0.,1.),t),d=n(i+vec2(1.,1.),t);',
+'  vec2 u=f*f*(3.-2.*f);',
+'  return mix(mix(a,b,u.x),mix(c2,d,u.x),u.y);}',
+'void main(){',
+'  vec2 uv=gl_FragCoord.xy/u_r;uv.x*=u_r.x/u_r.y;',
+'  float t=u_t*.00035;',
+'  // 2 layered aurora bands — gold upper, green lower',
+'  float y1=uv.y + snoise(vec2(uv.x*1.2+t,uv.y*.6+t*.7),t*.1)*.18;',
+'  float y2=uv.y + snoise(vec2(uv.x*1.5-t*.8,uv.y*.5+t*.3),t*.1)*.14;',
+'  float band1=smoothstep(.78,.45,abs(y1-.62))*.14;',
+'  float band2=smoothstep(.55,.30,abs(y2-.35))*.10;',
+'  // fade edges',
+'  float fade=smoothstep(1.,.6,uv.y)*smoothstep(0.,.25,uv.y);',
+'  vec3 col=mix(vec3(.78,.65,.42),vec3(.29,.85,.50),smoothstep(.7,.4,uv.y));',
+'  gl_FragColor=vec4(col,(band1+band2)*fade);',
+'}'
+].join('\n');
+
+function compile(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.error('shader',gl.getShaderInfoLog(s));gl.deleteShader(s);return null;}return s;}
+var vs=compile(gl.VERTEX_SHADER,vsSrc), fs=compile(gl.FRAGMENT_SHADER,fsSrc);
+if(!vs||!fs){c.style.display='none';return;}
+var prog=gl.createProgram();gl.attachShader(prog,vs);gl.attachShader(prog,fs);gl.linkProgram(prog);
+if(!gl.getProgramParameter(prog,gl.LINK_STATUS)){console.error('link',gl.getProgramInfoLog(prog));c.style.display='none';return;}
+gl.useProgram(prog);
+// full-screen triangle
+var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+var loc=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+var uT=gl.getUniformLocation(prog,'u_t'),uR=gl.getUniformLocation(prog,'u_r');
+
+function resize(){
+var dpr=Math.min(devicePixelRatio||1,1.5);
+c.width=innerWidth*dpr;c.height=innerHeight*dpr;
+c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';
+gl.viewport(0,0,c.width,c.height);
+}
+resize();addEventListener('resize',resize);
+// fade in
+c.style.transition='opacity 2s ease';c.style.opacity='1';
+function frame(now){
+gl.uniform1f(uT,now);
+gl.uniform2f(uR,c.width,c.height);
+gl.drawArrays(gl.TRIANGLES,0,3);
+requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+
 // ===== 9. HERO PARALLAX + AURORA ORBS + NAV MORPH =====
     (function(){
       if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
