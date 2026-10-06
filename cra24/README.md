@@ -68,17 +68,15 @@ legal advice. It has no SBOM registry, no CVSS scoring, no Article 26 obligation
 and no NVD/EUVD feeds. Hosted compliance suites sell all of those; if that is what you
 need, buy one of those instead.
 
-## Paid help, if you want it
+## Paid help
 
-The tool is free under MIT and always will be. What costs money is a person doing the
-setup with you: configuring the evidence log for your product line, running a timed
-dry-run of a fictional case with your team, and reviewing your real notification drafts
-before you submit them. Details and prices are on the [project page](https://sisuthros.github.io/cra24-clock/).
-Business customers only.
+The tool is free under MIT and always will be. Paid setup help is paused and nothing is
+for sale. Questions and bug reports go to the
+[issues page](https://github.com/Sisuthros/cra24-clock/issues). The current version of
+the tool lives on the [project page](https://sisuthros.github.io/cra24-clock/).
 
 ## Licence
 
 MIT — see [`LICENSE`](LICENSE).
 
-Built by Ville Myllyniemi (Larnaca, Cyprus) with an AI agent family; a human reads and
-publishes everything here.
+Built by Sisuthros with an AI agent family; a human reads and publishes everything here.
