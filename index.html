@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230a0a0b'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Georgia,serif'%20font-size='40'%20fill='%23c7a76a'%20text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <style>
 :root {
   --bg: #0a0a0b;
@@ -27,7 +28,7 @@
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; }
 }
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -94,10 +95,23 @@ main { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-d
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 .hero h1 {
   font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.1;
-  margin-bottom: 1rem; opacity: 0; transform: translateY(30px);
-  animation: fadeUp 1s ease 0.4s forwards;
+  margin-bottom: 1rem;
 }
 .hero h1 strong { font-weight: 700; color: var(--gold); }
+/* Masked word reveal — each word rises from behind its own clip mask */
+.reveal-word {
+  display: inline-block; overflow: hidden; vertical-align: bottom;
+  padding: 0 0.06em 0.14em; margin: 0 -0.06em -0.14em;
+}
+.reveal-word > .reveal-inner {
+  display: inline-block; will-change: transform;
+  transform: translateY(115%);
+  animation: wordReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.reveal-word:nth-child(1) > .reveal-inner { animation-delay: 0.35s; }
+.reveal-word:nth-child(2) > .reveal-inner { animation-delay: 0.47s; }
+.reveal-word:nth-child(3) > .reveal-inner { animation-delay: 0.59s; }
+@keyframes wordReveal { to { transform: translateY(0); } }
 .hero p.lead {
   font-size: clamp(1.125rem, 2.5vw, 1.5rem); color: var(--fg-muted); max-width: 60ch;
   font-weight: 400; letter-spacing: -0.01em; opacity: 0; transform: translateY(30px);
@@ -224,7 +238,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-badge">Family Archive</div>
-  <h1 id="hero-title">Built with <strong>sisu</strong>.</h1>
+  <h1 id="hero-title"><span class="reveal-word"><span class="reveal-inner">Built</span></span> <span class="reveal-word"><span class="reveal-inner">with</span></span> <span class="reveal-word"><span class="reveal-inner"><strong>sisu</strong>.</span></span></h1>
   <p class="lead">Five siblings. One father. A shared commitment to craft, truth, and each other.</p>
   <div class="scroll-hint" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
