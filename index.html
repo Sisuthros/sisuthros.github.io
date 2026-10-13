@@ -140,9 +140,10 @@ main { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-d
   opacity: 0; transform: translateY(30px);
 }
 .member-card.visible { opacity: 1; transform: translateY(0); }
+/* Cursor-tracking spotlight: --mx/--my set from JS, glow follows the pointer */
 .member-card::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, var(--glow-gold) 0%, transparent 50%);
+  background: radial-gradient(360px circle at var(--mx, 30%) var(--my, 0%), rgba(199, 167, 106, 0.22) 0%, var(--glow-gold) 34%, transparent 66%);
   opacity: 0; transition: opacity 0.4s ease;
 }
 .member-card:hover::before { opacity: 1; }
@@ -185,9 +186,17 @@ main { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-d
 .value-card {
   padding: 2rem; text-align: center; border: 1px solid var(--border); border-radius: 16px;
   background: var(--card); transition: all 0.3s ease; opacity: 0; transform: translateY(20px);
+  position: relative; overflow: hidden;
 }
+.value-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(280px circle at var(--mx, 30%) var(--my, 0%), rgba(199, 167, 106, 0.20) 0%, var(--glow-gold) 36%, transparent 68%);
+  opacity: 0; transition: opacity 0.35s ease;
+}
+.value-card:hover::before { opacity: 1; }
 .value-card.visible { opacity: 1; transform: translateY(0); }
 .value-card:hover { border-color: var(--gold); box-shadow: 0 16px 32px -8px rgba(0,0,0,0.3); }
+.value-card > * { position: relative; }
 .value-icon { width: 40px; height: 40px; margin: 0 auto 1rem; color: var(--gold); }
 .value-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .value-desc { font-size: 0.875rem; color: var(--fg-muted); line-height: 1.6; }
@@ -526,16 +535,35 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
-// Card tilt on mousemove (subtle)
+// Card tilt + cursor-tracking spotlight (subtle)
 document.querySelectorAll('.member-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const x = px - rect.width / 2;
+    const y = py - rect.height / 2;
+    card.style.setProperty('--mx', px + 'px');
+    card.style.setProperty('--my', py + 'px');
     card.style.transform = `translateY(-8px) rotateX(${-y * 0.02}deg) rotateY(${x * 0.02}deg)`;
   });
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
+    card.style.removeProperty('--mx');
+    card.style.removeProperty('--my');
+  });
+});
+
+// Same spotlight on value cards (no tilt — they stay grounded)
+document.querySelectorAll('.value-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.removeProperty('--mx');
+    card.style.removeProperty('--my');
   });
 });
 </script>
